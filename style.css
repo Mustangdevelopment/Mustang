@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif, Helvetica, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .wrapper {
@@ -34,7 +34,8 @@
 
 /* Header Area */
 .site-header {
-  background-color: rgb(232, 232, 232);
+  background-color: #ff8c00;
+  transition: background-color 300ms linear;
   border-bottom: solid 1px #bebebe;
   position: fixed;
   margin-top: -20px;
@@ -46,12 +47,13 @@
 .site-header h2 {
   padding: 25px;
   margin-bottom: 0;
-  width: 10%;
+  width: 100%;
+  text-align: center;
 }
 
 .site-header a {
   text-decoration: none;
-  color: #ff8c00;
+  color: #fff;
 }
 
 .search-bar {
@@ -102,6 +104,7 @@ form.example::after {
   display: table;
 }
 
+/* Profile info header */
 .profile-info {
   position: absolute;
   top: 30px;
@@ -119,6 +122,13 @@ form.example::after {
   padding-left: 10px;
 }
 
+@media (max-width: 600px) {
+  .profile-info {
+    display: none;
+  }
+}
+
+/* End Profile info header */
 .site-nav {
   visibility: hidden;
   padding-top: 10px;
@@ -166,17 +176,16 @@ form.example::after {
   margin-right: auto;
   margin-left: auto;
   top: 100px;
+  width: 100%;
 }
 
 .feed-post {
   border: solid 2px #000;
   padding: 50px;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 100%;
   position: relative;
   box-shadow: -3px -3px rgba(0, 0, 0, 0.5);
-}
-@media (min-width: 1400px) {
 }
 
 .posted-post {
@@ -223,20 +232,38 @@ form.example::after {
 
 .posted-img {
   width: 100%;
-  max-height: 500px;
-  padding-left: 18px;
-  padding-right: 18px;
+  max-height: 300px;
   left: 10%;
   margin-bottom: 15px;
 }
 
+@media (min-width: 600px) {
+  .posted-img {
+    padding-left: 18px;
+    padding-right: 18px;
+    max-height: 500px;
+  }
+}
+
 /* Create new post */
 
-.create-post input {
+.create-post-textarea {
   width: 100%;
-  height: 200px;
+  height: 100px;
   position: relative;
   text-align: top;
+  resize: none;
+  outline: none;
+  padding-top: 35px;
+  padding-left: 17px;
+  margin-bottom: 150px;
+  left: 0;
+}
+
+@media (min-width: 1300px) {
+  .create-post-textarea {
+    height: 200px;
+  }
 }
 
 .create-post img {
@@ -252,19 +279,19 @@ form.example::after {
   width: 100%;
 }
 
-.comments-form {
-  margin-top: 0;
-  padding: 30px;
-  border-bottom: solid 1px #000;
-}
-.comments-form input {
-  padding: 30px;
+.comments-new-comment {
   width: 100%;
   margin-right: 0;
+  margin-top: 10px;
+  height: 50px;
+  resize: none;
+  padding-top: 10px;
+  padding-left: 22px;
+  outline: none;
 }
 
 @media (min-width: 580px) {
-  .comments-form input {
+  .comments-new-comment {
     width: 100%;
   }
 }
@@ -280,8 +307,14 @@ form.example::after {
   border-radius: 50%;
   border: solid 1px #000;
   position: absolute;
-  top: 2%;
-  left: -5%;
+  top: 0;
+  left: -10%;
+}
+
+@media (min-width: 615px) {
+  .comments-img {
+    left: -5%;
+  }
 }
 
 .comments-section {
@@ -299,12 +332,18 @@ form.example::after {
 }
 
 .img-row {
-  width: 100%;
+  width: 95%;
   position: absolute;
-  top: 160px;
-  left: 0;
+  top: 2px;
+  left: 1%;
+  background-color: white;
 }
 
+@media (min-width: 1300px) {
+  .img-row {
+    top: 1px;
+  }
+}
 .img-column {
   float: left;
   width: 7%;
@@ -328,15 +367,18 @@ form.example::after {
 }
 
 .img-row--comment {
-  width: 100%;
+  width: 70%;
   position: absolute;
-  right: 15%;
+  top: 85%;
+  left: 11%;
+  background-color: white;
 }
 
 .img-column--comment {
-  float: right;
+  float: left;
   width: 7%;
-  padding: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
 .img-column--comment img {
@@ -364,12 +406,72 @@ form.example::after {
     width: 5%;
   }
 
-  .img-row--comment {
-    right: 8%;
-  }
-
   .img-column--special {
     width: 5%;
   }
 }
+
+@media (min-width: 600px) {
+  .img-row--comment {
+    left: 13%;
+  }
+}
 /* End Comment section */
+
+/* Menu Icon */
+
+.menu-icon-dots {
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  z-index: 10;
+  top: 50px;
+  left: 2%;
+}
+
+.menu-icon-dots::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transform-origin: 0 0;
+  transition: transform 0.3s ease-out;
+}
+
+.menu-icon-dots-middle {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: White;
+  transition: all 0.3s ease-out;
+  transform-origin: 0 50%;
+}
+
+.menu-icon-dots::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: White;
+  transform-origin: 0 100%;
+  transition: transform 0.3s ease-out;
+}
+
+@media (min-width: 1340px) {
+  .menu-icon-dots {
+    display: none;
+  }
+
+  .site-header h2 {
+    width: 10%;
+  }
+}
+
+/*End of Menu Icon */
